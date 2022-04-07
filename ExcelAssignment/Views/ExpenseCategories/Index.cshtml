@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ExcelAssignment.Models.ExpenseCategory>
+
+@{
+    Layout = "_Layout";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Category</title>
+</head>
+<body>
+
+    <p>
+        <a class="btn btn-success" asp-action="Create">Create Value</a>
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="Expenses">  Visit ExpenseInfo </a>
+    </p>
+    <table class="table table-striped table-bordered  table-info table-sm col-md-8 ">
+        <thead>
+            <tr>
+                <th>
+                    ExCategoryName
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExCategoryName)
+                        </td>
+                        <td>
+                            <a class="badge badge-warning" asp-action="Edit" asp-route-id="@item.ExCategoryId">Upload</a> |
+                            <a class="badge badge-danger" asp-action="Delete" asp-route-id="@item.ExCategoryId">Remove</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
